@@ -41,15 +41,6 @@ router.get("/:customListName",checkIsInRole(ROLE.BASIC, ROLE.ADMIN), function(re
                 await list.save();
                 res.redirect("/to-do-list/" + customListName);
             }
-            else if(foundItem.items.length === 0) {
-                List.findOneAndUpdate(
-                  {name: customListName, userId: req.user.id},
-                  {items: defaultItems},
-                  (err, foundItem)=>{
-                    if(!err) res.redirect("/to-do-list/" + customListName);
-                  }
-                );
-            }
             else {
                 //Show existing list
                 res.render("lists/list", {listTitle: foundItem.name, newListItems: foundItem.items})

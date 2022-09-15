@@ -1,0 +1,30 @@
+<%- include('partials/loginheader') %>
+<main class="form-signin w-100 m-auto">
+    <form action="/login" method="POST">
+        <img class="mb-4" src="images/gacha2.jpg" alt="" width="100" height="100">
+        <h1 class="h3 mb-3 fw-normal">Log in, Boy!</h1>
+        
+        <input type="email" name="username" class="form-control btop" placeholder="Username">
+        <input type="password" name="password" class="form-control buttom" placeholder="Password">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        <hr>
+        <div class="social">
+          <a class="btn btn-block login-with-google-btn" href="/auth/google" role="button">
+            Sign In with Google
+          </a>
+        </div>
+        <hr>
+        <a href="/register" class="btn btn-outline-primary">Not registered?</a>
+        <p class="mt-5 mb-3 text-muted">&copy; Kirmorus</p>
+    </form>
+
+    
+
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+</script>
+
+<%- include('partials/footer') %>

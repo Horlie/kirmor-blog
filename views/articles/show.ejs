@@ -1,0 +1,20 @@
+<%- include("../partials/header") %> 
+
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-8">
+            <h1 class="blog-post-title mb-2"><%= article.title %> </h1>
+            <div class="blog-post-meta"><%= article.createdAt.toLocaleDateString("en-US",{month: 'long', day: 'numeric', year: 'numeric'}) %></div>
+            <%if (locals.session.loggedin && role === "admin") { %>
+            <a href="/articles/edit/<%= article.id %>" class="btn btn-sm btn-outline-primary ms-2">Edit</a>
+            <form action="/articles/<%= article.id %>?_method=DELETE" method="POST" class="d-inline"><button type="submit" class="btn btn-sm btn-danger">Delete</button></form>
+            <% } %> 
+            <%- article.sanitizedHtml %>
+            <a href="/" class="btn btn-sm btn-secondary">Back</a>
+        </div>
+    </div>
+</div>
+    
+
+
+<%- include("../partials/footer") %> 

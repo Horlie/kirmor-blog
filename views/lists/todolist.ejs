@@ -1,0 +1,73 @@
+<%- include("../partials/header") -%> 
+<style>
+    body {
+        background: rgba(241, 241, 241, 0.1);
+    }
+</style>
+
+<div class="container p-4 p-md-5 mb-4 rounded border">
+    <div class="text-center px-0">
+        <h1 class="display-4 fst-italic">Welcome to your list collection</h1>
+        <p class="lead my-3"> This is a page where all of your lists can be seen</p>
+    </div>
+</div>
+<% if(list.length === 0) { %>
+<div class="container">
+    <div class="mt-5 mb-5 mx-auto text-center dropdown-center">
+        <a href="" class="btn btn-lg btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">Create your first list</a>
+        <form class="dropdown-menu p-4" method="post" action="/to-do-list/new">
+            <div class="mb-3">
+                <label for="title" class="form-label">List Name</label>
+                <input required type="text" name="title" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+    </div>
+</div>
+<% } else { %>
+<div class="text-center dropup-center">
+    <a href="" class="btn btn-sm btn-outline-primary" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">Create one more list</a>
+    <form class="dropdown-menu p-4" method="post" action="/to-do-list/new">
+        <div class="mb-3">
+            <label for="title" class="form-label">List Name</label>
+            <input required type="text" name="title" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>
+<div class="container mt-5 mb-5">
+    
+    <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-evenly">
+
+        <% list.forEach((list)=>{ %>
+            <div class="col">
+
+                <div class="card bazwell">
+                    <div class="card-body">
+                        <div class="dropdown">
+
+                            <a class="btn btn-sm" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">...</a>
+                            
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><form action="/to-do-list/<%= list.id %>?_method=DELETE" method="POST" class="d-inline"><button type="submit" class="dropdown-item text-danger todo-delete">Delete</button></form></li>
+                            </ul>
+                        </div>
+                        <h5 class="card-title text-center"><%= list.name %></h5>
+                        <ul class="list-group">
+                            <% list.items.slice(0, 3).forEach((item)=>{ %>
+                            <li class="list-group-item"><%=item.name%></li>
+                            <% }) %>
+                        </ul>
+                        <a href="/to-do-list/<%= list.name %>" class="card-link text-center stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+            
+        <% }) %>
+    </div>   
+
+</div>
+
+<% } %>
+
+<%- include("../partials/footer") -%> 

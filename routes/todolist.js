@@ -59,7 +59,7 @@ router.post("/",checkIsInRole(ROLE.BASIC, ROLE.ADMIN), function(req, res){
       name: itemName
     });
 
-    List.findOne({name: listName}, (err, foundList)=>{
+    List.findOne({name: listName, userId: req.user.id}, (err, foundList)=>{
         foundList.items.push(item);
         foundList.save();
         res.redirect("/to-do-list/" + listName);

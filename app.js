@@ -56,7 +56,7 @@ const homeStartingContent = "This is the greatest blog website that the humankin
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/secrets"
+    callbackURL: "https://kirmor-blog.herokuapp.com/auth/google/secrets"
   },
   function(accessToken, refreshToken, profile, cb) {
     User.findOrCreate({ googleId: profile.id, role: ROLE.BASIC }, function (err, user) {

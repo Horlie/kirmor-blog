@@ -4,7 +4,7 @@
         <h1> <%= listTitle %> </h1>
     </div>
 
-    <div class="box">
+    <div class="box" id="list">
         <%  newListItems.forEach((item)=>{ %>
         <form action="/to-do-list/delete" method="post">
             <div class="item">

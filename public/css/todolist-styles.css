@@ -141,14 +141,3 @@ a[role=button] {
 .active {
     font-weight: 700;
 }
-
-@media only screen and (max-width: 768px) {
-    .box{
-        max-width: 600px;
-    }
-    body {
-        min-height: 0;
-        height: 100vh;
-        width: 100vw;
-    }
-}

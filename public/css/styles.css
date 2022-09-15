@@ -173,8 +173,8 @@ background-color: #000;
 }
 
 .card li {
-  background-color: #CBADFF;
-  background: linear-gradient(35deg, #d58bf0 50%, #CBADFF 50%);
+  background-color: #A683E3;
+  background: linear-gradient(35deg, #E4E9FD 50%, #A683E3 50%);
   background-attachment: fixed;
   min-height: 100%;
 }
